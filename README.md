@@ -11,4 +11,4 @@ Spothiefy is an application developed in Python using its library Selenium, whic
 4. **You are good to go!**: Just run the main.py file. Make sure you have the chrome web driver downloaded and the PyTube and Selenium libraries installed
 
 ## Common Issues
-You may run into an exception *pytube.exceptions.RegexMatchError: __init__: could not find match for ^\w+\W*, if so, you can easily solve it by following the steps on [Stack Overflow]([https://console.firebase.google.com/](https://stackoverflow.com/questions/70776558/pytube-exceptions-regexmatcherror-init-could-not-find-match-for-w-w)https://stackoverflow.com/questions/70776558/pytube-exceptions-regexmatcherror-init-could-not-find-match-for-w-w)
+You may run into an exception *pytube.exceptions.RegexMatchError: __init__: could not find match for ^\w+\W*, if so, you can easily solve it by following the steps on [Stack Overflow](https://stackoverflow.com/questions/70776558/pytube-exceptions-regexmatcherror-init-could-not-find-match-for-w-w)
