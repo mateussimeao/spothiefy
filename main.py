@@ -3,6 +3,7 @@ import time
 from selenium import webdriver
 from pytube import YouTube
 import os
+from moviepy.video.io.VideoFileClip import VideoFileClip
 
 def create_playlist(link: str, drive):
     drive.get(link)
@@ -30,11 +31,11 @@ def create_playlist(link: str, drive):
            
     return info
 
-def download_songs(info, drive): 
-    title = info[0]
-    tracks = info[1]
+def download_songs(user_path, playlist, drive): 
+    title = playlist[0]
+    tracks = playlist[1]
     # choose where you want the playlist to be downloaded
-    folder_path = 'C:\\Users\\Usuario\\Downloads\\' + title
+    folder_path = user_path + title
 
     # creating playlist folder
     try:
@@ -67,18 +68,36 @@ def download_songs(info, drive):
         print('downloading song...')
         time.sleep(5)
         out_file = video.download(output_path=folder_path)
-        new_file = folder_path + '/' + track['artist'] + ' - ' + track['name'] + '.mp3'
+        new_file = folder_path + '/' + track['name'] + ' - ' + track['artist'] + '.mp4'
         os.rename(out_file, new_file)
+        
         print('song downloaded')
-        time.sleep(2)
+
+def convert_to_mp3(user_path, playlist):
+    folder_path = user_path + playlist[0]
+
+    for file in os.listdir(folder_path):
+        if(file.endswith('.mp4')):
+            input_file = os.path.join(folder_path, file)
+            output_file = os.path.join(folder_path, file.replace('.mp4', '.mp3'))
+            video_clip = VideoFileClip(input_file)
+            audio_clip = video_clip.audio
+            audio_clip.write_audiofile(output_file)
+            audio_clip.close()
+            video_clip.close()
+
+            os.remove(input_file)
 
 def main():
     # any spotify playlist link
     LINK = 'SPOTIFY PLAYLIST/ALBUM LINK GOES HERE'
+    USER_PATH = 'C:\\Users\\Usuario\\Downloads\\'
     drive = webdriver.Chrome()
     playlist = create_playlist(LINK, drive) # get the songs and artists from the playlist as a dictionary list
-    
-    download_songs(playlist, drive)
+    download_songs(USER_PATH, playlist, drive) # download the songs from YouTube based on the list
+    convert_to_mp3(USER_PATH, playlist) # convert the downloaded songs from mp4 to mp3 format
+
+
     drive.quit()
     print('done')
 

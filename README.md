@@ -7,7 +7,7 @@ Spothiefy is an application developed in Python using its library Selenium, whic
 ## How to Use It
 1. **Clone the Repository**: `git clone https://github.com/mateussimeao/spothiefy.git`
 2. **Choose your playlist**: Paste your playlist url on the "LINK" string (currently only taking spotify links)
-3. **Set your download path**: Select the path in your local disk where you want the playlist folder to be created and downloaded. Go to the download_songs function and change the ONLY THE STRING section of "folder_path"
+3. **Set your download path**: Select the path in your local disk where you want the playlist folder to be created and downloaded by changing the USER_PATH string
 4. **You are good to go!**: Just run the main.py file. Make sure you have the chrome web driver downloaded and the PyTube and Selenium libraries installed
 
 ## Common Issues
