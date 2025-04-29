@@ -1,0 +1,33 @@
+# Ambientes virtuais
+venv/
+.venv/
+
+# Cache e arquivos Python compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configurações de IDEs
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Executáveis de navegador / WebDriver
+chromedriver
+chromedriver.exe
+geckodriver
+msedgedriver
+operadriver
+
+# Pastas comuns de output
+dist/
+build/
+*.egg-info/
